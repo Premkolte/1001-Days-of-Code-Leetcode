@@ -11,7 +11,6 @@ public:
             }
             else if(el==nums[i]){
                 cnt++;
-
             }
             else {
                 cnt--;
