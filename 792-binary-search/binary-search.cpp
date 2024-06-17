@@ -12,6 +12,13 @@ public:
     int n = nums.size();
     int low = 0 , high = n-1;
         return bs(nums,low,high,target);
+
+
+
+
+
+
+        
     // while(low<=high){
     //     int mid = (low +high)/2;
     //     if(nums[mid] == target) return mid;
