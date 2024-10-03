@@ -1,21 +1,21 @@
 class Solution {
 public:
     vector<int> arrayRankTransform(vector<int>& arr) {
-        set<int> unqEle;
-        unordered_map<int, int> numRankMp;
+        set<int> uniqueEle;
+        unordered_map<int, int> nummap;
         for (auto num : arr) {
-            unqEle.insert(num);
+            uniqueEle.insert(num);
         }
         
         int rank = 1;
-        for (auto ele : unqEle) {
-            numRankMp[ele] = rank++;
+        for (auto ele : uniqueEle) {
+            nummap[ele] = rank++;
         }
 
-        int size = arr.size();
-        vector<int> ranks(size);
-        for (int indx = 0; indx < size; indx++) {
-            ranks[indx] = numRankMp[arr[indx]];
+        int n = arr.size();
+        vector<int> ranks(n);
+        for (int i = 0; i < n; i++) {
+            ranks[i] = nummap[arr[i]];
         }
         return ranks;
     }
