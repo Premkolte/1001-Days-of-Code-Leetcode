@@ -11,7 +11,7 @@ Language Diversity: Code in your language of choice, and celebrate the beauty of
 Collaborative Learning: Engage in constructive discussions, offer suggestions, and witness diverse strategies in action.
 
 # 🏆 Milestones Achieved (So Far):
-60+ Problems: We've compiled an assortment of 60+ problems covering a spectrum of difficulties.
+250+ Problems: We've compiled an assortment of 250+ problems covering a spectrum of difficulties.
 Diverse Solutions: Contributors have poured in solutions in C++
 Engaged Community: Our growing community of problem solvers has fostered a collaborative environment, where learning thrives.
 
