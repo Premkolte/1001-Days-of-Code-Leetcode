@@ -1,15 +1,15 @@
 class Solution {
     public:
         int findNumbers(vector<int>& nums) {
-            int count = 0;
-            for (int i : nums) {
-                int msb = 31 - __builtin_clz(i); 
-                int digits = (msb * 0.30103) + 1;
-                if (i >= pow(10, digits)) ++digits;
-                if (digits % 2 == 0) {
-                    ++count;
-                }
+            int n=nums.size();
+            int cnt=0;
+            for(int i=0;i<n;i++){
+                int a = nums[i];
+                int m = to_string(a).length();
+
+                if(m%2==0) cnt++;
             }
-            return count;
+
+            return cnt;
         }
     };
