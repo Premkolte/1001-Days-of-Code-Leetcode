@@ -15,10 +15,13 @@ public:
             string ps;
         for(int i=0;i<s.length();i++){
             int a=s[i];
-            if((a >= 65 && a <= 90) || (a >= 97 && a <= 122) || (a >= 48 && a <= 57)){
+            // if((a >= 65 && a <= 90) || (a >= 97 && a <= 122) || (a >= 48 && a <= 57)){
+            //     ps.push_back(tolower(s[i]));
+            // }
+
+            if(isalnum(s[i])){ //fn isalnum is for ifALFAN&UMERIALA;
                 ps.push_back(tolower(s[i]));
             }
-
 
         }
         return palindrome(ps);
