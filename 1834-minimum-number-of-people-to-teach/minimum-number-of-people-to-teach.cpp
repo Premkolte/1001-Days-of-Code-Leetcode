@@ -1,61 +1,39 @@
-#include <bits/stdc++.h>
-using namespace std;
-
 class Solution {
 public:
-    int minimumTeachings(int totalLanguages, vector<vector<int>>& userLanguages, vector<vector<int>>& friendships) {
-        unordered_set<int> usersToTeach;
+    int minimumTeachings(int n, vector<vector<int>>& languages, vector<vector<int>>& friendships) {
+        unordered_set<int> sadUsers;
 
-        // Step 1: Identify users who can't communicate
-        for (auto& friendship : friendships) {
-            int user1 = friendship[0] - 1; // Convert to 0-based index
-            int user2 = friendship[1] - 1;
-            bool canCommunicate = false;
+        for(auto &friends : friendships) {
+            int u = friends[0] - 1; //convert this to - based indexing
+            int v = friends[1] - 1;
 
-            for (int lang1 : userLanguages[user1]) {
-                for (int lang2 : userLanguages[user2]) {
-                    if (lang1 == lang2) {
-                        canCommunicate = true;
-                        break;
-                    }
+            unordered_set<int> langSet(begin(languages[u]), end(languages[u]));
+            bool canTalk = false;
+            for(int lang : languages[v]) {
+                if(langSet.count(lang)) {
+                    canTalk = true;
+                    break;
                 }
-                if (canCommunicate) break;
             }
 
-            if (!canCommunicate) {
-                usersToTeach.insert(user1);
-                usersToTeach.insert(user2);
+            if(!canTalk) {
+                sadUsers.insert(u);
+                sadUsers.insert(v);
             }
         }
 
-        // Step 2: Try teaching each language
-        vector<int> language(totalLanguages+1, 0);
-        int mostKnowLang = 0;
+        //Find max known language among sad users
+        vector<int> language(n+1, 0);
+        int mostKnownLang = 0;
 
-        // for (int language = 1; language <= totalLanguages; language++) {
-        //     int count = 0;
-
-        //     for (int user : usersToTeach) {
-        //         bool knowsLanguage = false;
-        //         for (int lang : userLanguages[user]) {
-        //             if (lang == language) {
-        //                 knowsLanguage = true;
-        //                 break;
-        //             }
-        //         }
-        //         if (!knowsLanguage) count++;
-        //     }
-
-        //     minUsersToTeach = min(minUsersToTeach, count);
-        // }
-
-        for(int user: usersToTeach){
-            for(int lang: userLanguages[user]){
+        for(int user : sadUsers) {
+            for(int lang : languages[user]) {
                 language[lang]++;
-                mostKnowLang = max(mostKnowLang, language[lang]);
+                mostKnownLang = max(mostKnownLang, language[lang]);
             }
         }
 
-        return (usersToTeach.size()- mostKnowLang);
+        return sadUsers.size() - mostKnownLang;
+        
     }
 };
