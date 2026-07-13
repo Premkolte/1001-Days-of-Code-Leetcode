@@ -9,7 +9,8 @@ public:
         
         int rank = 1;
         for (auto ele : uniqueEle) {
-            nummap[ele] = rank++;
+            nummap[ele] = rank;
+            rank++;
         }
 
         int n = arr.size();
@@ -18,5 +19,8 @@ public:
             ranks[i] = nummap[arr[i]];
         }
         return ranks;
+
+
+        
     }
 };
