@@ -6,7 +6,7 @@ public:
         if(k==0) return 0;
 
         if(dp[i][k] != -1) return dp[i][k];
-        if(k%2==0){
+        if(k%2==0){                                            // check if k%2==0
             int c1 = bns(prices, n, i+1, k-1, dp) - prices[i]; //buy
             int c2 = bns(prices, n, i+1, k, dp);
 
