@@ -1,15 +1,31 @@
 class Solution {
 public:
-    int maxProfit(vector<int>& prices) {
-        int profit = 0;
+    int bns(vector<int>& prices,int n, int i, int k, vector<vector<int>> &dp){
+        if(i==n) return 0;
 
-        // Capture every increasing segment as profit.
-        for (int i = 1; i < static_cast<int>(prices.size()); ++i) {
-            if (prices[i] > prices[i - 1]) {
-                profit += prices[i] - prices[i - 1];
-            }
+        if(k==0) return 0;
+
+        if(dp[i][k] != -1) return dp[i][k];
+        if(k==2){
+            int c1 = bns(prices, n, i+1, k-1, dp) - prices[i];
+            int c2 = bns(prices, n, i+1, k, dp);
+
+            return dp[i][k] =  max(c1,c2);
+        }
+        else{
+            int c1 = bns(prices, n, i+1, 2,dp) + prices[i];
+            int c2 = bns(prices, n, i+1, k,dp);
+
+            return dp[i][k] = max(c1,c2);
+
         }
 
-        return profit;
+    }
+    int maxProfit(vector<int>& prices) {
+        int n = prices.size();
+        int k=2;
+
+        vector<vector<int>> dp(n+1, vector<int> (k+1,-1));
+        return bns(prices, n, 0, k, dp);
     }
 };
