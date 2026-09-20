@@ -9,4 +9,4 @@ on p.product_id = u.product_id
 AND u.purchase_date between p.start_date and p.end_date 
 -- took help
 
-group by product_id
+group by p.product_id
